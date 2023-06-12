@@ -1,6 +1,7 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Movie } from './movie.entity';
 import { User } from './user.entity';
+import { Transform } from 'class-transformer';
 
 @Entity()
 export class Shows {
@@ -34,9 +35,11 @@ export class Shows {
   @Column()
   platinumPrice: number;
 
+  @Transform(({ obj }) => obj.movie.id)
   @ManyToOne(() => Movie, (movie) => movie.shows)
   movie: Movie;
 
+  @Transform(({ obj }) => obj.user.id)
   @ManyToOne(() => User, (user) => user.id)
   user: User;
 }

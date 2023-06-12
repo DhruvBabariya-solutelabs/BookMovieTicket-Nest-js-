@@ -8,6 +8,7 @@ import {
 import { User } from './user.entity';
 import { Shows } from './shows.entites';
 import { MovieTicket } from './movie-ticket.entity';
+import { Transform } from 'class-transformer';
 
 @Entity()
 export class Movie {
@@ -29,6 +30,7 @@ export class Movie {
   @Column('simple-array')
   choreographers: string[];
 
+  @Transform(({ obj }) => obj.createdby.id)
   @ManyToOne(() => User, (user) => user.movie)
   createdby: User;
 

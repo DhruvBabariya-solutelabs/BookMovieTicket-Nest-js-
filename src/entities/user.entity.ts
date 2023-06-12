@@ -3,7 +3,7 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Movie } from './movie.entity';
 import { Shows } from './shows.entites';
 import { MovieTicket } from './movie-ticket.entity';
-import { Exclude } from 'class-transformer';
+import { Exclude, Transform } from 'class-transformer';
 
 @Entity()
 export class User {
